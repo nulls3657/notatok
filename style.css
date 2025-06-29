@@ -1,0 +1,360 @@
+/* Загальний стиль */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f1f3f4;
+  color: #202124;
+}
+
+.app {
+  display: flex;
+}
+
+/* Бокова панель */
+.sidebar {
+  width: 80px;
+  background-color: #fff;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.sidebar button:hover {
+  background-color: #e8eaed;
+}
+
+.sidebar img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Головна частина */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  max-width: 1200px;
+}
+
+/* Інпут для нової нотатки */
+.note-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(60,64,67,.3);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.note-input input[type="text"],
+.note-input textarea {
+  flex: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 16px;
+  background-color: transparent;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/* 🌟 Стиль фокусу полів */
+.note-input input[type="text"]:focus,
+.note-input textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #1a73e8;
+  border-radius: 6px;
+  background-color: #f1faff;
+}
+
+body.dark-mode .note-input input[type="text"]:focus,
+body.dark-mode .note-input textarea:focus {
+  background-color: #2c2c2c;
+  box-shadow: 0 0 0 2px #90caf9;
+  color: #fff;
+}
+
+.note-input input[type="color"] {
+  width: 36px;
+  height: 36px;
+  border: none;
+  padding: 0;
+  background: none;
+}
+
+.note-input button {
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}
+
+/* Секції нотаток */
+h2 {
+  font-size: 16px;
+  margin: 20px 0 10px;
+  color: #5f6368;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Сітка нотаток */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+/* Стиль нотаток */
+.note {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 1px 3px rgba(60,64,67,.3);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  word-wrap: break-word;
+  transition: transform 0.1s ease-in-out;
+}
+
+.note:hover {
+  transform: scale(1.01);
+}
+
+.note .note-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.note ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.note ul li {
+  list-style: disc;
+}
+
+.note .note-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.note .note-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.note .note-actions button:hover {
+  background-color: #e8eaed;
+}
+
+.note .note-actions img {
+  width: 20px;
+  height: 20px;
+}
+
+body.dark-mode {
+  background-color: #202124;
+  color: #e8eaed;
+}
+
+body.dark-mode .note {
+  background-color: #303134 !important;
+  color: #e8eaed;
+}
+
+body.dark-mode .note-input {
+  background-color: #303134;
+  color: #e8eaed;
+}
+
+body.dark-mode .sidebar {
+  background-color: #2d2e30;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  margin-right: 4px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.icon-btn:hover {
+  background-color: #e8eaed;
+}
+
+body.dark-mode .icon-btn:hover {
+  background-color: #5f6368;
+}
+
+.modal {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.modal textarea {
+  width: 100%;
+  height: 250px;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  color: #000;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  resize: vertical;
+}
+
+.modal:not(.hidden) {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+  gap: 12px;
+}
+
+.modal-buttons button {
+  background-color: rgba(255, 255, 255, 0.85);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-buttons button:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.color-picker {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.color-option {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.color-option:hover {
+  border: 2px solid #000;
+}
+
+body.dark .color-option:hover {
+  border: 2px solid #fff;
+}
+
+.color-option.selected {
+  border: 2px solid red;
+}
+
+.note-buttons button {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.note-buttons button img {
+  display: block;
+  width: 18px;
+  height: 18px;
+  filter: invert(0);
+}
+
+body.dark .note-buttons button img {
+  filter: invert(1);
+}
+
+.note.selected {
+  outline: 3px solid #4285f4;
+}
+
+.color-circle-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: white;
+}
+
+.color-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+
+.checkbox-item {
+  margin: 4px 0;
+  font-size: 16px;
+}
+
+.checkbox-item input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
